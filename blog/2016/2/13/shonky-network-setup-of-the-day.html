@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/tufte.css" media="screen">
+    <title>Shonky Network Setup of the Day — Michael Twomey</title>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Shonky Network Setup of the Day — Michael Twomey</h1>
+        <p>Published 2016-2-13</p>
+      </header>
+      <section>
+      <p>So, here I am helping another <a href="https://www.gamecraft.it/events/i-heart-you-gamecraft-2016/"> GameCraft</a>  , this time I’m hoping to write a simple game using my shiny new <a href="http://flotil.la/"> Flotilla</a>  on my Raspberry Pis.</p><p> First problem: connecting to the network for stuff. The GameCraft is graciously being hosted by <a href="http://www.dit.ie/"> DIT</a>  in their excellent new <a href="http://www.dit.ie/grangegorman/"> Grangegorman campus</a>  . They have also given us access to the Wifi. The problem is it’s 801.x so it’s awkward to configure using WPA supplicant on a Pi.</p><p> Second problem: To get around this I want to share the wifi from my Macbook over an ethernet cable to a wifi router I brought for just such an occasion. The problem here is OS X won’t share an 801.x connection.</p><p> Convoluted solution: Connect to the wifi from my Mac, then turn on my VPN connection (with send all traffic turned on), then share  <em> that</em> connection to my Wifi router, which my Pis can connect to. Simples.</p><p> Bonus: For some reason the Irish VPN endpoint isn’t working so I’m routing via the UK.</p><p> Ok, I could just simply connect the Pis to my router and my laptop to that, but then I’d lose the ability to download all the code I forgot to download in advance :)</p>
+      </section>
+      <section>
+      The current page is called blog/2016/2/13/shonky-network-setup-of-the-day.html.
+      The parent is <a href="/blog/index.html">blog/index.html</a>.
+      The previous is <a href="/blog/2016/2/24/oops-i-elm-tutoriald-again.html">blog/2016/2/24/oops-i-elm-tutoriald-again.html</a>.
+      The next is <a href="/blog/2015/7/17/stuff-of-interest-to-mick-july-2015-edition.html">blog/2015/7/17/stuff-of-interest-to-mick-july-2015-edition.html</a>.
+      </section>
+    </article>
+</body>
+</html>

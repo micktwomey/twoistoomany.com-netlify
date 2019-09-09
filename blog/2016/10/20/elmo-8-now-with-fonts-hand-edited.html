@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/tufte.css" media="screen">
+    <title>ELMO-8: Now With Fonts</title>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>ELMO-8: Now With Fonts</h1>
+        <p>Published 2016-10-20</p>
+      </header>
+      <section>
+      <p>Quick update: cute 8-bit fonts work in ELMO-8 now.</p><p>Thanks to WebGL Fundamentals for the correct matrix footwork (<a href="http://webglfundamentals.org/webgl/lessons/webgl-2d-matrices.html">WebGL 2D Matrices</a>).</p><p>I never bothered to get the correct font metrics, and I’m torn as to whether it’s worth doing. I rather like the whimsical offsets characters have. (Basically the baseline is all off, so all the fonts render from the top.)</p><figure><img src="elmo-8_now_with_fonts.png"/><br/>Fonts!</figure><pre language="elm"><p>{-| PICO-8’s Hello.lua redone in ELMO-8<br/>-}</p><p>import Elmo8.Console as Console</p><p>type alias Model = {<br/>    t : Int<br/>}</p><p>init : Model<br/>init = { t = 0 }</p><p>update : Model -&gt; Model<br/>update model =<br/>    { model | t = model.t + 1 }</p><p>draw_letter : Int -&gt; Int -&gt; Int -&gt; List Console.Command<br/>draw_letter t i j0 =<br/>    let<br/>        j = 7 - j0<br/>        col = 7 + j<br/>        t1 = t + i*4 - j*2<br/>        –x = cos(t) * 5<br/>        –PICO-8 example: cos(nil) * 5 -&gt; 1 * 5<br/>        x = 5<br/>        y = 38 + j + cos(t1/3.5) * 5<br/>    in<br/>        [ Console.sprite (16+i) (8+i*8 + x + 2)  (round y + 2)<br/>        , Console.sprite (32+i) (8+i*8 + x + 1)  (round y + 1)<br/>        , Console.sprite (48+i) (8+i*8 + x)  (round y)<br/>        ]</p><p>draw : Console.Console Model -&gt; Model -&gt;  List Console.Command<br/>draw console model =<br/>    [ List.map2 (\i j -&gt; draw_letter model.t i j) [1..11] [0..10] |&gt; List.concat<br/>    , List.map (\i -&gt; Console.putPixel i 0 i) [0..15]<br/>    , [ Console.sprite 1 60 100<br/>      , Console.putPixel 9 79 10<br/>      , Console.print “Welcome to ELMO-8!” 10 80 9<br/>      , Console.print “Hello World” 0 1 6<br/>      , Console.print “Ö” 60 120 5<br/>      ]<br/>    ] |&gt; List.concat</p><p>main : Program Never<br/>main =<br/> Console.boot<br/>    { draw = draw<br/>    , init = init<br/>    , update = update<br/>    , spritesUri = “/hello_world.png”<br/>    }</p></pre>
+      </section>
+      <section>
+      The current page is called blog/2016/10/20/elmo-8-now-with-fonts-hand-edited.html.
+
+
+
+      </section>
+    </article>
+</body>
+</html>
