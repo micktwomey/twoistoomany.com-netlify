@@ -23,4 +23,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self' ; img-src 'self' images.squarespace-cdn.com ; style-src 'self' github.githubassets.com ; script-src 'self' https://gist.github.com/micktwomey/"
+    Content-Security-Policy = "default-src 'self' ; img-src 'self' images.squarespace-cdn.com ; style-src 'self' github.githubassets.com 'unsafe-inline' ; script-src 'self' https://gist.github.com/micktwomey/"
