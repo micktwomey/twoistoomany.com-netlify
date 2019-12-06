@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,17 +11,15 @@
     <article>
       <header>
         <h1>Working on ELMO-8</h1>
-        <p>Published 2016-10-19</p>
+        <p class="subtitle">Published 2016-10-19</p>
       </header>
       <section>
       <p>I’ve been busy over the past few months working on various different things (and a job change!).</p><p>I helped give a workshop at Joy of Coding 2016 which aspired to build a small platformer using Elm. Alas two things worked against us: Elm 0.17 came out which hit the reset button on lots of projects (and the code we had written), and we had to figure out the best way to write a game in Elm (from scratch). This lead to a more frustrating experience then we would have liked.</p><h2>Digression: Elm Graphic Libraries</h2><p>At the moment you have a few different options for graphics (and games) in Elm:</p><ol><li>Plain old HTML + CSS, lots of different games you can write with that (ok, probably text heavy ones).</li><li>SVG, you can create vector art dynamically. A lot of Elm games go down this path to great effect.</li><li>Elm Graphics, the original graphics library in Elm. This combines HTML and the canvas element to render graphics. This is what we opted for, but it proved inconsistent to use (you had to jump between HTML and canvas abstractions).</li><li>WebGL, the GPU powered approach. Elm’s WebGL library is excellent, including a GLSL parser to lint your shaders (neat!). This is the approach I’m using now, despite learning the hard way how to write shaders.</li></ol><h2>ELMO-8</h2><p>One of the applications (project? IDE?) I’ve encountered recently is the PICO-8. PICO-8 is a “fantasy” games console, when it starts it comes up with a 128x128 screen you can start writing Lua code in. Games are loaded using “cartridges”. It’s got sprites, a little chiptunes editor and even a boot sequence. It’s totally worth checking out.</p><p>Inspired by this I’ve been working on a new games library for Elm called the ELMO-8, strongly inspired by PICO-8. It’s got similar constraints, it’s a 128x128 display with a fixed palette. It has pixels, sprites and snazzy bitmap fonts (and it will have background layers with a bit of luck). It’s implemented in WebGL, which has proven “fun” to learn. Things tend to either not work, work or eat your memory.</p><figure><img src="an_f.png"/><br/>Here’s an early shot of me finally getting pixels to go to the right place. Pro tip: use an F texture, you can spot when it’s the wrong way up.</figure><h2>Current State</h2><p>ELMO-8 is getting close to a first release. It doesn’t crash my browser and it mostly doesn’t leak memory (pro-tip: don’t keep re-allocating vertex arrays, bad idea). I have a few things I want to get working properly before I release it, plus I’m not 100% on how you interact with it (originally I adhered very closely to the PICO-8 API, but I’m starting to drift towards a more ELM model like approach).</p><p>Here’s some code to give you an idea of what it’s like:</p><pre language="elm"><p>import Elmo8.Console as Console<br/>import Elmo8.Palettes.Pico8 as Palette</p><p>type alias Model = {}</p><p>draw : Console.Console Model -&gt; Model -&gt;  List Console.Command<br/>draw console model =<br/>    [ Console.sprite 2 60 30<br/>    ]</p><p>update : Model -&gt; Model<br/>update model = model</p><p>main : Program Never<br/>main =<br/> Console.boot<br/>    { draw = draw<br/>    , init = { }<br/>    , update = update<br/>    , spritesUri = “/birdwatching.png”<br/>    }</p></pre><figure><img src="a_bird.png"/><br/>And the result: a bird!</figure>
       </section>
-      <section>
-      The current page is called blog/2016/10/19/working-on-elmo-8-hand-edited.html.
-      The parent is <a href="/blog/index.html">blog/index.html</a>.
-      The previous is <a href="/blog/2016/10/20/elmo-8-now-with-fonts-hand-edited.html">blog/2016/10/20/elmo-8-now-with-fonts-hand-edited.html</a>.
-      The next is <a href="/blog/2016/11/15/quick-update-on-elmo-8-and-elm-018.html">blog/2016/11/15/quick-update-on-elmo-8-and-elm-018.html</a>.
-      </section>
+      <footer>
+        <p>Back to <a href="/blog/index.html">Michael Twomey's Blog</a></p>
+        <p>Copyright © Michael Twomey 2014-2019</p>
+      </footer>
     </article>
-</body>
+  </body>
 </html>

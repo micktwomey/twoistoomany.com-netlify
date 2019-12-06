@@ -1,3 +1,13 @@
+/* Copied from tufte.css pre.code */
 section > div.gist {
-    width: 55%;
+    width: 52.5%;
+    margin-left: 2.5%;
+    overflow-x: auto;
+    display: block;
+}
+
+@media (max-width: 760px) {
+  section > div.gist {
+    width: 97%;
+  }
 }
